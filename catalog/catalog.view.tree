@@ -1,5 +1,14 @@
 $giper_balls_catalog $mol_book2_catalog
 	menu_title @ \Giper Balls
+	Menu_title $mol_view
+		sub /
+			<= Title_text $mol_paragraph
+				title <= menu_title
+			<= Lives_counter $mol_view
+				sub /
+					<= Lives_icon $mol_icon_heart
+					<= Lives_count $mol_paragraph
+						title \5
 	plugins /
 		<= Theme $mol_theme_auto
 	placeholders /
@@ -24,6 +33,10 @@ $giper_balls_catalog $mol_book2_catalog
 				^
 				<= Spread_close
 		offer <= Offer $giper_balls_offer
+			tools /
+				^
+				<= Spread_close
+		shop <= Shop $giper_balls_shop
 			tools /
 				^
 				<= Spread_close

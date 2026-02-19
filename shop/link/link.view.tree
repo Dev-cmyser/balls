@@ -1,0 +1,6 @@
+$giper_balls_shop_link $mol_link
+	hint @ \Магазин
+	arg *
+		shop \
+	sub /
+		<= Icon $mol_icon_cart
