@@ -2795,143 +2795,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    function $mol_wait_timeout_async(this: $, timeout: number): Promise<void>;
-    function $mol_wait_timeout(this: $, timeout: number): void;
-}
-
-declare namespace $ {
-
-	type $mol_link__uri_mol_embed_native_1 = $mol_type_enforce<
-		ReturnType< $mol_embed_native['uri'] >
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__sub_mol_embed_native_2 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	export class $mol_embed_native extends $mol_scroll {
-		uri( next?: string ): string
-		title( ): string
-		Fallback( ): $mol_link
-		uri_change( next?: any ): any
-		dom_name( ): string
-		window( ): any
-		attr( ): ({ 
-			'src': ReturnType< $mol_embed_native['uri'] >,
-		})  & ReturnType< $mol_scroll['attr'] >
-		sub( ): readonly(any)[]
-		message( ): ({ 
-			hashchange( next?: ReturnType< $mol_embed_native['uri_change'] > ): ReturnType< $mol_embed_native['uri_change'] >,
-		}) 
-	}
-	
-}
-
-//# sourceMappingURL=native.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_embed_native extends $.$mol_embed_native {
-        window(): Window;
-        load(frame: HTMLIFrameElement): Promise<Window>;
-        uri_resource(): string;
-        message_listener(): $mol_dom_listener;
-        sub_visible(): readonly $mol_view_content[];
-        message_receive(event?: MessageEvent<[string, string]>): void;
-        uri_change(event: MessageEvent<[string, string]>): void;
-        auto(): (Window | $mol_dom_listener)[];
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_frame extends $mol_embed_native {
-		allow( ): string
-		html( ): any
-		attr( ): ({ 
-			'tabindex': ReturnType< $mol_frame['tabindex'] >,
-			'allow': ReturnType< $mol_frame['allow'] >,
-			'src': ReturnType< $mol_frame['uri'] >,
-			'srcdoc': ReturnType< $mol_frame['html'] >,
-		}) 
-		fullscreen( ): boolean
-		accelerometer( ): boolean
-		autoplay( ): boolean
-		encription( ): boolean
-		gyroscope( ): boolean
-		pip( ): boolean
-		clipboard_read( ): boolean
-		clipboard_write( ): boolean
-	}
-	
-}
-
-//# sourceMappingURL=frame.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_frame extends $.$mol_frame {
-        window(): any;
-        allow(): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $giper_web_frame extends $mol_frame {
-		uri( ): string
-		query( ): string
-	}
-	
-}
-
-//# sourceMappingURL=frame.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $giper_web_frame extends $.$giper_web_frame {
-        uri(): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	export class $mol_icon_gift extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=gift.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_gift_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_link_donate extends $mol_link {
-		Icon( ): $mol_icon_gift_outline
-		hint( ): string
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=donate.view.tree.d.ts.map
-declare namespace $ {
 
 	export class $mol_icon_face extends $mol_icon {
 		path( ): string
@@ -2960,35 +2823,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=support.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_script extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=script.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_script_text extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=text.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_link_source extends $mol_link {
-		Icon( ): $mol_icon_script_text
-		hint( ): string
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=source.view.tree.d.ts.map
 declare namespace $ {
     class $mol_dom_event<EventType extends Event> extends $mol_object {
         readonly native: EventType;
@@ -3500,6 +3334,11 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_wait_timeout_async(this: $, timeout: number): Promise<void>;
+    function $mol_wait_timeout(this: $, timeout: number): void;
+}
+
+declare namespace $ {
 
 	type $mol_check_icon__hint_giper_balls_chess_game_1 = $mol_type_enforce<
 		string
@@ -3551,6 +3390,101 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__minimal_height_mol_labeler_1 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_view['minimal_height'] >
+	>
+	type $mol_view__sub_mol_labeler_2 = $mol_type_enforce<
+		ReturnType< $mol_labeler['label'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__minimal_height_mol_labeler_3 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_view['minimal_height'] >
+	>
+	type $mol_view__sub_mol_labeler_4 = $mol_type_enforce<
+		ReturnType< $mol_labeler['content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_labeler extends $mol_list {
+		label( ): readonly($mol_view_content)[]
+		Label( ): $mol_view
+		content( ): readonly(any)[]
+		Content( ): $mol_view
+		rows( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=labeler.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_paragraph__title_giper_balls_requisites_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_requisites_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_labeler__title_giper_balls_requisites_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_giper_balls_requisites_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_paragraph__title_giper_balls_requisites_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_labeler__title_giper_balls_requisites_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_giper_balls_requisites_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_list__rows_giper_balls_requisites_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	export class $giper_balls_requisites extends $mol_page {
+		Title( ): $mol_paragraph
+		OGRNIP_value( ): $mol_paragraph
+		OGRNIP( ): $mol_labeler
+		INN_value( ): $mol_paragraph
+		INN( ): $mol_labeler
+		Info( ): $mol_list
+		title( ): string
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=requisites.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
     function $mol_offline(): void;
 }
 
@@ -3562,55 +3496,48 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_link_donate__uri_giper_balls_catalog_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_donate['uri'] >
-	>
-	type $mol_link_support__uri_giper_balls_catalog_2 = $mol_type_enforce<
+	type $mol_link_support__uri_giper_balls_catalog_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_support['uri'] >
 	>
-	type $mol_link_source__uri_giper_balls_catalog_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_source['uri'] >
-	>
-	type $giper_balls_lines__tools_giper_balls_catalog_4 = $mol_type_enforce<
+	type $giper_balls_lines__tools_giper_balls_catalog_2 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_lines['tools'] >
 	>
-	type $giper_balls_crowd__tools_giper_balls_catalog_5 = $mol_type_enforce<
+	type $giper_balls_crowd__tools_giper_balls_catalog_3 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_crowd['tools'] >
 	>
-	type $giper_balls_chess_game__tools_giper_balls_catalog_6 = $mol_type_enforce<
+	type $giper_balls_chess_game__tools_giper_balls_catalog_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_chess_game['tools'] >
 	>
+	type $giper_balls_requisites__tools_giper_balls_catalog_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $giper_balls_requisites['tools'] >
+	>
 	export class $giper_balls_catalog extends $mol_book2_catalog {
 		Theme( ): $mol_theme_auto
-		Space( ): $giper_web_frame
-		Donate( ): $mol_link_donate
 		Support( ): $mol_link_support
-		Source( ): $mol_link_source
 		Lights( ): $mol_lights_toggle
 		Lines( ): $giper_balls_lines
 		Crowd( ): $giper_balls_crowd
 		Chess( ): $giper_balls_chess_game
+		Requisites( ): $giper_balls_requisites
 		menu_title( ): string
 		plugins( ): readonly(any)[]
 		placeholders( ): readonly(any)[]
-		pages( ): readonly(any)[]
 		menu_foot( ): readonly(any)[]
 		spreads( ): ({ 
 			'lines': ReturnType< $giper_balls_catalog['Lines'] >,
 			'crowd': ReturnType< $giper_balls_catalog['Crowd'] >,
 			'chess': ReturnType< $giper_balls_catalog['Chess'] >,
+			'requisites': ReturnType< $giper_balls_catalog['Requisites'] >,
 		}) 
 	}
 	
