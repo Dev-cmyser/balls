@@ -1,0 +1,20 @@
+{
+	"name": "Giper Balls",
+	"short_name": "Giper Balls",
+	"description": "",
+	"id": "giper_balls_catalog",
+	"start_url": "../../..",
+	"display": "fullscreen",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"categories": [
+		"game"
+	],
+	"icons": [
+		{
+			"src": "../../../giper/balls/logo/logo_512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}

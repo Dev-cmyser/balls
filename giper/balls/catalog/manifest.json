@@ -1,0 +1,16 @@
+{
+	"short_name": "Giper Balls",
+	"name": "Giper Balls",
+	"categories": [ "game" ],
+	"icons": [
+		{
+			"src": "../../../giper/balls/logo/logo_512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "../../..",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"display": "fullscreen"
+}
