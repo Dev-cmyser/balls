@@ -3,13 +3,8 @@ $giper_balls_catalog $mol_book2_catalog
 	plugins /
 		<= Theme $mol_theme_auto
 	placeholders /
-	pages /
-		<= Space $giper_web_frame
-		^
 	menu_foot /
-		<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-		<= Support $mol_link_support uri \https://t.me/giper_web/118
-		<= Source $mol_link_source uri \http://github.com/giper-dev/balls/
+		<= Support $mol_link_support uri \https://t.me/Dev_cmyser
 		<= Lights $mol_lights_toggle
 	spreads *
 		lines <= Lines $giper_balls_lines
