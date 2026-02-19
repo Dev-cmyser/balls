@@ -1,0 +1,10 @@
+$giper_balls_crowd $giper_balls_game
+	title @ \Crowd
+	mood_smiles /
+		\._.
+		\*_*
+		\*o*
+		\^_^
+		\^o^
+	auto /
+		<= life null

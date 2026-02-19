@@ -16,6 +16,10 @@ $giper_balls_catalog $mol_book2_catalog
 			tools /
 				^
 				<= Spread_close
+		crowd <= Crowd $giper_balls_crowd
+			tools /
+				^
+				<= Spread_close
 		chess <= Chess $giper_balls_chess_game
 			tools /
 				^
