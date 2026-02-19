@@ -1,0 +1,17 @@
+$giper_balls_requisites $mol_page
+	title @ \Реквизиты
+	body /
+		<= Info $mol_list
+			rows /
+				<= Title $mol_paragraph
+					title @ \Реквизиты ИП Новгородцев Кирилл Александрович
+				<= OGRNIP $mol_labeler
+					title @ \ОГРНИП
+					content /
+						<= OGRNIP_value $mol_paragraph
+							title \325350000056770
+				<= INN $mol_labeler
+					title @ \ИНН
+					content /
+						<= INN_value $mol_paragraph
+							title \351400789430

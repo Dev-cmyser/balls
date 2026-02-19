@@ -19,3 +19,7 @@ $giper_balls_catalog $mol_book2_catalog
 			tools /
 				^
 				<= Spread_close
+		requisites <= Requisites $giper_balls_requisites
+			tools /
+				^
+				<= Spread_close
