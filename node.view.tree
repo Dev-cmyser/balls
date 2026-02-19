@@ -1005,52 +1005,58 @@ $giper_balls_shop $mol_page
 			sub /
 				<= Product_1 $mol_view
 					sub /
-						<= Product_1_title $mol_paragraph
-							title @ \1 жизнь
-						<= Product_1_price $mol_view
+						<= Product_1_content $mol_view
 							sub /
-								<= Price_1_value $mol_paragraph
-									title \200
-								<= Price_1_currency $mol_paragraph
-									title \₽
-						<= Product_1_note $mol_paragraph
-							title @ \200 ₽ за жизнь
+								<= Product_1_title $mol_paragraph
+									title @ \1 жизнь
+								<= Product_1_price $mol_view
+									sub /
+										<= Price_1_value $mol_paragraph
+											title \200
+										<= Price_1_currency $mol_paragraph
+											title \₽
+								<= Product_1_note $mol_paragraph
+									title @ \200 ₽ за жизнь
 						<= Buy_1 $mol_button_major
 							title @ \Купить
 							click? <=> buy_1? null
 				<= Product_3 $mol_view
 					sub /
-						<= Product_3_badge $mol_paragraph
-							title @ \Выгодно
-						<= Product_3_title $mol_paragraph
-							title @ \3 жизни
-						<= Product_3_price $mol_view
+						<= Product_3_content $mol_view
 							sub /
-								<= Price_3_value $mol_paragraph
-									title \400
-								<= Price_3_currency $mol_paragraph
-									title \₽
-						<= Product_3_note $mol_paragraph
-							title @ \~133 ₽ за жизнь
+								<= Product_3_badge $mol_paragraph
+									title @ \Выгодно
+								<= Product_3_title $mol_paragraph
+									title @ \3 жизни
+								<= Product_3_price $mol_view
+									sub /
+										<= Price_3_value $mol_paragraph
+											title \400
+										<= Price_3_currency $mol_paragraph
+											title \₽
+								<= Product_3_note $mol_paragraph
+									title @ \~133 ₽ за жизнь
 						<= Buy_3 $mol_button_major
 							title @ \Купить
 							click? <=> buy_3? null
 				<= Product_5 $mol_view
 					sub /
-						<= Product_5_badge $mol_paragraph
-							title @ \Лучшее предложение!
-						<= Product_5_title $mol_paragraph
-							title @ \5 жизней
-						<= Product_5_subtitle $mol_paragraph
-							title @ \Полное восстановление
-						<= Product_5_price $mol_view
+						<= Product_5_content $mol_view
 							sub /
-								<= Price_5_value $mol_paragraph
-									title \500
-								<= Price_5_currency $mol_paragraph
-									title \₽
-						<= Product_5_note $mol_paragraph
-							title @ \100 ₽ за жизнь
+								<= Product_5_badge $mol_paragraph
+									title @ \Лучшее предложение!
+								<= Product_5_title $mol_paragraph
+									title @ \5 жизней
+								<= Product_5_subtitle $mol_paragraph
+									title @ \Полное восстановление
+								<= Product_5_price $mol_view
+									sub /
+										<= Price_5_value $mol_paragraph
+											title \500
+										<= Price_5_currency $mol_paragraph
+											title \₽
+								<= Product_5_note $mol_paragraph
+									title @ \100 ₽ за жизнь
 						<= Buy_5 $mol_button_major
 							title @ \Купить
 							click? <=> buy_5? null

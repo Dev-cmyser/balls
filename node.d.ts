@@ -5061,25 +5061,25 @@ declare namespace $ {
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_button_major__title_giper_balls_shop_9 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_major['title'] >
-	>
-	type $mol_button_major__click_giper_balls_shop_10 = $mol_type_enforce<
-		ReturnType< $giper_balls_shop['buy_1'] >
-		,
-		ReturnType< $mol_button_major['click'] >
-	>
-	type $mol_view__sub_giper_balls_shop_11 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_giper_balls_shop_12 = $mol_type_enforce<
+	type $mol_button_major__title_giper_balls_shop_10 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_paragraph['title'] >
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_giper_balls_shop_11 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['buy_1'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_view__sub_giper_balls_shop_12 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_paragraph__title_giper_balls_shop_13 = $mol_type_enforce<
 		string
@@ -5096,40 +5096,40 @@ declare namespace $ {
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_view__sub_giper_balls_shop_16 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_paragraph__title_giper_balls_shop_17 = $mol_type_enforce<
+	type $mol_paragraph__title_giper_balls_shop_16 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_button_major__title_giper_balls_shop_18 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_17 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_giper_balls_shop_19 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_button_major__title_giper_balls_shop_20 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_major['title'] >
 	>
-	type $mol_button_major__click_giper_balls_shop_19 = $mol_type_enforce<
+	type $mol_button_major__click_giper_balls_shop_21 = $mol_type_enforce<
 		ReturnType< $giper_balls_shop['buy_3'] >
 		,
 		ReturnType< $mol_button_major['click'] >
 	>
-	type $mol_view__sub_giper_balls_shop_20 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_22 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_paragraph__title_giper_balls_shop_21 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_paragraph__title_giper_balls_shop_22 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_paragraph__title_giper_balls_shop_23 = $mol_type_enforce<
 		string
@@ -5146,37 +5146,52 @@ declare namespace $ {
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_view__sub_giper_balls_shop_26 = $mol_type_enforce<
-		readonly(any)[]
+	type $mol_paragraph__title_giper_balls_shop_26 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $mol_view['sub'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_paragraph__title_giper_balls_shop_27 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_button_major__title_giper_balls_shop_28 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_28 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_29 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_button_major['title'] >
-	>
-	type $mol_button_major__click_giper_balls_shop_29 = $mol_type_enforce<
-		ReturnType< $giper_balls_shop['buy_5'] >
-		,
-		ReturnType< $mol_button_major['click'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_view__sub_giper_balls_shop_30 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_giper_balls_shop_31 = $mol_type_enforce<
+	type $mol_button_major__title_giper_balls_shop_31 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_giper_balls_shop_32 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['buy_5'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_view__sub_giper_balls_shop_33 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_giper_balls_shop_32 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_34 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_35 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
@@ -5191,6 +5206,7 @@ declare namespace $ {
 		Price_1_currency( ): $mol_paragraph
 		Product_1_price( ): $mol_view
 		Product_1_note( ): $mol_paragraph
+		Product_1_content( ): $mol_view
 		buy_1( next?: any ): any
 		Buy_1( ): $mol_button_major
 		Product_1( ): $mol_view
@@ -5200,6 +5216,7 @@ declare namespace $ {
 		Price_3_currency( ): $mol_paragraph
 		Product_3_price( ): $mol_view
 		Product_3_note( ): $mol_paragraph
+		Product_3_content( ): $mol_view
 		buy_3( next?: any ): any
 		Buy_3( ): $mol_button_major
 		Product_3( ): $mol_view
@@ -5210,6 +5227,7 @@ declare namespace $ {
 		Price_5_currency( ): $mol_paragraph
 		Product_5_price( ): $mol_view
 		Product_5_note( ): $mol_paragraph
+		Product_5_content( ): $mol_view
 		buy_5( next?: any ): any
 		Buy_5( ): $mol_button_major
 		Product_5( ): $mol_view
