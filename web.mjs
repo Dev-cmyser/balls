@@ -8002,6 +8002,17 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_heart) = class $mol_icon_heart extends ($.$mol_icon) {
+		path(){
+			return "M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 	($.$mol_theme_auto) = class $mol_theme_auto extends ($.$mol_plugin) {
 		dark(){
 			return "$mol_theme_dark";
@@ -12805,7 +12816,553 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_button_major) = class $mol_button_major extends ($.$mol_button_minor) {
+		theme(){
+			return "$mol_theme_base";
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/button/major/major.view.css", "[mol_button_major] {\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$giper_balls_shop) = class $giper_balls_shop extends ($.$mol_page) {
+		Info_icon(){
+			const obj = new this.$.$mol_icon_heart();
+			return obj;
+		}
+		Info_text(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Info_text_title")));
+			return obj;
+		}
+		Info(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Info_icon()), (this.Info_text())]);
+			return obj;
+		}
+		Description(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Description_title")));
+			return obj;
+		}
+		Product_1_title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_1_title_title")));
+			return obj;
+		}
+		Price_1_value(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("200");
+			return obj;
+		}
+		Price_1_currency(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("₽");
+			return obj;
+		}
+		Product_1_price(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Price_1_value()), (this.Price_1_currency())]);
+			return obj;
+		}
+		Product_1_note(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_1_note_title")));
+			return obj;
+		}
+		buy_1(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Buy_1(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Buy_1_title")));
+			(obj.click) = (next) => ((this.buy_1(next)));
+			return obj;
+		}
+		Product_1(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Product_1_title()), 
+				(this.Product_1_price()), 
+				(this.Product_1_note()), 
+				(this.Buy_1())
+			]);
+			return obj;
+		}
+		Product_3_badge(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_3_badge_title")));
+			return obj;
+		}
+		Product_3_title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_3_title_title")));
+			return obj;
+		}
+		Price_3_value(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("400");
+			return obj;
+		}
+		Price_3_currency(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("₽");
+			return obj;
+		}
+		Product_3_price(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Price_3_value()), (this.Price_3_currency())]);
+			return obj;
+		}
+		Product_3_note(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_3_note_title")));
+			return obj;
+		}
+		buy_3(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Buy_3(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Buy_3_title")));
+			(obj.click) = (next) => ((this.buy_3(next)));
+			return obj;
+		}
+		Product_3(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Product_3_badge()), 
+				(this.Product_3_title()), 
+				(this.Product_3_price()), 
+				(this.Product_3_note()), 
+				(this.Buy_3())
+			]);
+			return obj;
+		}
+		Product_5_badge(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_5_badge_title")));
+			return obj;
+		}
+		Product_5_title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_5_title_title")));
+			return obj;
+		}
+		Product_5_subtitle(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_5_subtitle_title")));
+			return obj;
+		}
+		Price_5_value(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("500");
+			return obj;
+		}
+		Price_5_currency(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("₽");
+			return obj;
+		}
+		Product_5_price(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Price_5_value()), (this.Price_5_currency())]);
+			return obj;
+		}
+		Product_5_note(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Product_5_note_title")));
+			return obj;
+		}
+		buy_5(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Buy_5(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Buy_5_title")));
+			(obj.click) = (next) => ((this.buy_5(next)));
+			return obj;
+		}
+		Product_5(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Product_5_badge()), 
+				(this.Product_5_title()), 
+				(this.Product_5_subtitle()), 
+				(this.Product_5_price()), 
+				(this.Product_5_note()), 
+				(this.Buy_5())
+			]);
+			return obj;
+		}
+		Products(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Product_1()), 
+				(this.Product_3()), 
+				(this.Product_5())
+			]);
+			return obj;
+		}
+		Footer(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Footer_title")));
+			return obj;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$giper_balls_shop_title"));
+		}
+		body(){
+			return [
+				(this.Info()), 
+				(this.Description()), 
+				(this.Products()), 
+				(this.Footer())
+			];
+		}
+	};
+	($mol_mem(($.$giper_balls_shop.prototype), "Info_icon"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Info_text"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Info"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Description"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_1_title"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Price_1_value"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Price_1_currency"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_1_price"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_1_note"));
+	($mol_mem(($.$giper_balls_shop.prototype), "buy_1"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Buy_1"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_1"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_3_badge"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_3_title"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Price_3_value"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Price_3_currency"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_3_price"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_3_note"));
+	($mol_mem(($.$giper_balls_shop.prototype), "buy_3"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Buy_3"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_3"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_5_badge"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_5_title"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_5_subtitle"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Price_5_value"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Price_5_currency"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_5_price"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_5_note"));
+	($mol_mem(($.$giper_balls_shop.prototype), "buy_5"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Buy_5"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Product_5"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Products"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Footer"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $giper_balls_shop extends $.$giper_balls_shop {
+            buy_1() {
+                this.$.$mol_log3_rise({
+                    place: this,
+                    message: 'Покупка 1 жизни',
+                });
+            }
+            buy_3() {
+                this.$.$mol_log3_rise({
+                    place: this,
+                    message: 'Покупка 3 жизней',
+                });
+            }
+            buy_5() {
+                this.$.$mol_log3_rise({
+                    place: this,
+                    message: 'Покупка 5 жизней',
+                });
+            }
+        }
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "buy_1", null);
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "buy_3", null);
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "buy_5", null);
+        $$.$giper_balls_shop = $giper_balls_shop;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($giper_balls_shop, {
+            Info: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: $mol_gap.text,
+                padding: $mol_gap.block,
+            },
+            Info_icon: {
+                fontSize: '2rem',
+                color: $mol_theme.special,
+            },
+            Info_text: {
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                margin: 0,
+            },
+            Description: {
+                textAlign: 'center',
+                padding: {
+                    left: $mol_gap.block,
+                    right: $mol_gap.block,
+                    bottom: $mol_gap.block,
+                },
+                color: $mol_theme.shade,
+            },
+            Products: {
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                gap: $mol_gap.block,
+                padding: $mol_gap.block,
+            },
+            Product_1: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: $mol_gap.text,
+                padding: $mol_gap.block,
+                border: {
+                    radius: '12px',
+                    width: '2px',
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
+                background: {
+                    color: $mol_theme.back,
+                },
+            },
+            Product_1_title: {
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                margin: 0,
+            },
+            Product_1_price: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                justifyContent: 'center',
+                gap: '0.25rem',
+            },
+            Price_1_value: {
+                fontSize: '2.5rem',
+                fontWeight: 'bold',
+                margin: 0,
+            },
+            Price_1_currency: {
+                fontSize: '1.5rem',
+                margin: 0,
+            },
+            Product_1_note: {
+                textAlign: 'center',
+                fontSize: '0.9rem',
+                color: $mol_theme.shade,
+                margin: 0,
+            },
+            Product_3: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: $mol_gap.text,
+                padding: $mol_gap.block,
+                border: {
+                    radius: '12px',
+                    width: '2px',
+                    style: 'solid',
+                    color: $mol_theme.current,
+                },
+                background: {
+                    color: $mol_theme.back,
+                },
+                position: 'relative',
+            },
+            Product_3_badge: {
+                position: 'absolute',
+                top: '-10px',
+                right: '10px',
+                padding: {
+                    top: '4px',
+                    bottom: '4px',
+                    left: '12px',
+                    right: '12px',
+                },
+                background: {
+                    color: $mol_theme.current,
+                },
+                color: $mol_theme.text,
+                fontSize: '0.8rem',
+                fontWeight: 'bold',
+                border: {
+                    radius: '12px',
+                },
+                margin: 0,
+            },
+            Product_3_title: {
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                margin: 0,
+            },
+            Product_3_price: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                justifyContent: 'center',
+                gap: '0.25rem',
+            },
+            Price_3_value: {
+                fontSize: '2.5rem',
+                fontWeight: 'bold',
+                margin: 0,
+            },
+            Price_3_currency: {
+                fontSize: '1.5rem',
+                margin: 0,
+            },
+            Product_3_note: {
+                textAlign: 'center',
+                fontSize: '0.9rem',
+                color: $mol_theme.shade,
+                margin: 0,
+            },
+            Product_5: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: $mol_gap.text,
+                padding: $mol_gap.block,
+                border: {
+                    radius: '12px',
+                    width: '3px',
+                    style: 'solid',
+                    color: $mol_theme.special,
+                },
+                background: {
+                    color: $mol_theme.back,
+                },
+                position: 'relative',
+                boxShadow: `0 4px 12px ${$mol_theme.shade}`,
+            },
+            Product_5_badge: {
+                position: 'absolute',
+                top: '-10px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                padding: {
+                    top: '4px',
+                    bottom: '4px',
+                    left: '16px',
+                    right: '16px',
+                },
+                background: {
+                    color: $mol_theme.special,
+                },
+                color: $mol_theme.text,
+                fontSize: '0.85rem',
+                fontWeight: 'bold',
+                border: {
+                    radius: '12px',
+                },
+                margin: 0,
+            },
+            Product_5_title: {
+                fontSize: '1.3rem',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                margin: 0,
+            },
+            Product_5_subtitle: {
+                textAlign: 'center',
+                fontSize: '0.9rem',
+                color: $mol_theme.shade,
+                margin: 0,
+            },
+            Product_5_price: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                justifyContent: 'center',
+                gap: '0.25rem',
+            },
+            Price_5_value: {
+                fontSize: '3rem',
+                fontWeight: 'bold',
+                margin: 0,
+                color: $mol_theme.special,
+            },
+            Price_5_currency: {
+                fontSize: '1.8rem',
+                margin: 0,
+                color: $mol_theme.special,
+            },
+            Product_5_note: {
+                textAlign: 'center',
+                fontSize: '0.9rem',
+                color: $mol_theme.shade,
+                margin: 0,
+            },
+            Footer: {
+                textAlign: 'center',
+                fontSize: '0.85rem',
+                padding: $mol_gap.block,
+                color: $mol_theme.shade,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$giper_balls_catalog) = class $giper_balls_catalog extends ($.$mol_book2_catalog) {
+		Title_text(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.menu_title()));
+			return obj;
+		}
+		Lives_icon(){
+			const obj = new this.$.$mol_icon_heart();
+			return obj;
+		}
+		Lives_count(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("5");
+			return obj;
+		}
+		Lives_counter(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Lives_icon()), (this.Lives_count())]);
+			return obj;
+		}
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
@@ -12844,8 +13401,18 @@ var $;
 			(obj.tools) = () => ([...(this.$.$giper_balls_offer.prototype.tools.call(obj)), (this.Spread_close())]);
 			return obj;
 		}
+		Shop(){
+			const obj = new this.$.$giper_balls_shop();
+			(obj.tools) = () => ([...(this.$.$giper_balls_shop.prototype.tools.call(obj)), (this.Spread_close())]);
+			return obj;
+		}
 		menu_title(){
 			return (this.$.$mol_locale.text("$giper_balls_catalog_menu_title"));
+		}
+		Menu_title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Title_text()), (this.Lives_counter())]);
+			return obj;
 		}
 		plugins(){
 			return [(this.Theme())];
@@ -12862,10 +13429,15 @@ var $;
 				"crowd": (this.Crowd()), 
 				"chess": (this.Chess()), 
 				"requisites": (this.Requisites()), 
-				"offer": (this.Offer())
+				"offer": (this.Offer()), 
+				"shop": (this.Shop())
 			};
 		}
 	};
+	($mol_mem(($.$giper_balls_catalog.prototype), "Title_text"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Lives_icon"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Lives_count"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Lives_counter"));
 	($mol_mem(($.$giper_balls_catalog.prototype), "Theme"));
 	($mol_mem(($.$giper_balls_catalog.prototype), "Support"));
 	($mol_mem(($.$giper_balls_catalog.prototype), "Lights"));
@@ -12874,6 +13446,8 @@ var $;
 	($mol_mem(($.$giper_balls_catalog.prototype), "Chess"));
 	($mol_mem(($.$giper_balls_catalog.prototype), "Requisites"));
 	($mol_mem(($.$giper_balls_catalog.prototype), "Offer"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Shop"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Menu_title"));
 
 
 ;
@@ -13023,10 +13597,41 @@ var $;
             background: {
                 size: ['cover'],
                 position: 'center',
-                image: [
-                    [linear_gradient($mol_theme.spirit)],
-                    [url('giper/balls/logo/back.jpg')],
-                ]
+                image: [[linear_gradient($mol_theme.spirit)], [url('giper/balls/logo/back.jpg')]],
+            },
+            Menu_title: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: $mol_gap.block,
+                justifyContent: 'space-between',
+            },
+            Lives_counter: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '0.25rem',
+                padding: {
+                    top: '4px',
+                    bottom: '4px',
+                    left: '12px',
+                    right: '12px',
+                },
+                background: {
+                    color: $mol_theme.card,
+                },
+                border: {
+                    radius: '16px',
+                },
+            },
+            Lives_icon: {
+                fontSize: '1.2rem',
+                color: $mol_theme.special,
+            },
+            Lives_count: {
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                margin: 0,
             },
         });
     })($$ = $.$$ || ($.$$ = {}));

@@ -2731,6 +2731,15 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_heart extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=heart.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $mol_theme_auto extends $mol_plugin {
 		dark( ): string
 		theme( ): ReturnType< $mol_theme_auto['dark'] >
@@ -4956,6 +4965,232 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_button_major extends $mol_button_minor {
+		theme( ): string
+	}
+	
+}
+
+//# sourceMappingURL=major.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_paragraph__title_giper_balls_shop_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_giper_balls_shop_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_giper_balls_shop_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_button_major__title_giper_balls_shop_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_giper_balls_shop_10 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['buy_1'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_view__sub_giper_balls_shop_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_13 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_giper_balls_shop_16 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_button_major__title_giper_balls_shop_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_giper_balls_shop_19 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['buy_3'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_view__sub_giper_balls_shop_20 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_21 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_22 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_24 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_25 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_giper_balls_shop_26 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_27 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_button_major__title_giper_balls_shop_28 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_giper_balls_shop_29 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['buy_5'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_view__sub_giper_balls_shop_30 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_giper_balls_shop_31 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_32 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	export class $giper_balls_shop extends $mol_page {
+		Info_icon( ): $mol_icon_heart
+		Info_text( ): $mol_paragraph
+		Info( ): $mol_view
+		Description( ): $mol_paragraph
+		Product_1_title( ): $mol_paragraph
+		Price_1_value( ): $mol_paragraph
+		Price_1_currency( ): $mol_paragraph
+		Product_1_price( ): $mol_view
+		Product_1_note( ): $mol_paragraph
+		buy_1( next?: any ): any
+		Buy_1( ): $mol_button_major
+		Product_1( ): $mol_view
+		Product_3_badge( ): $mol_paragraph
+		Product_3_title( ): $mol_paragraph
+		Price_3_value( ): $mol_paragraph
+		Price_3_currency( ): $mol_paragraph
+		Product_3_price( ): $mol_view
+		Product_3_note( ): $mol_paragraph
+		buy_3( next?: any ): any
+		Buy_3( ): $mol_button_major
+		Product_3( ): $mol_view
+		Product_5_badge( ): $mol_paragraph
+		Product_5_title( ): $mol_paragraph
+		Product_5_subtitle( ): $mol_paragraph
+		Price_5_value( ): $mol_paragraph
+		Price_5_currency( ): $mol_paragraph
+		Product_5_price( ): $mol_view
+		Product_5_note( ): $mol_paragraph
+		buy_5( next?: any ): any
+		Buy_5( ): $mol_button_major
+		Product_5( ): $mol_view
+		Products( ): $mol_view
+		Footer( ): $mol_paragraph
+		title( ): string
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=shop.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $giper_balls_shop extends $.$giper_balls_shop {
+        buy_1(): void;
+        buy_3(): void;
+        buy_5(): void;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
     function $mol_offline(): void;
 }
 
@@ -4971,37 +5206,66 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_link_support__uri_giper_balls_catalog_1 = $mol_type_enforce<
+	type $mol_paragraph__title_giper_balls_catalog_1 = $mol_type_enforce<
+		ReturnType< $giper_balls_catalog['menu_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_giper_balls_catalog_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_giper_balls_catalog_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_link_support__uri_giper_balls_catalog_4 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_support['uri'] >
 	>
-	type $giper_balls_lines__tools_giper_balls_catalog_2 = $mol_type_enforce<
+	type $giper_balls_lines__tools_giper_balls_catalog_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_lines['tools'] >
 	>
-	type $giper_balls_crowd__tools_giper_balls_catalog_3 = $mol_type_enforce<
+	type $giper_balls_crowd__tools_giper_balls_catalog_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_crowd['tools'] >
 	>
-	type $giper_balls_chess_game__tools_giper_balls_catalog_4 = $mol_type_enforce<
+	type $giper_balls_chess_game__tools_giper_balls_catalog_7 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_chess_game['tools'] >
 	>
-	type $giper_balls_requisites__tools_giper_balls_catalog_5 = $mol_type_enforce<
+	type $giper_balls_requisites__tools_giper_balls_catalog_8 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_requisites['tools'] >
 	>
-	type $giper_balls_offer__tools_giper_balls_catalog_6 = $mol_type_enforce<
+	type $giper_balls_offer__tools_giper_balls_catalog_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_offer['tools'] >
 	>
+	type $giper_balls_shop__tools_giper_balls_catalog_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $giper_balls_shop['tools'] >
+	>
+	type $mol_view__sub_giper_balls_catalog_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
 	export class $giper_balls_catalog extends $mol_book2_catalog {
+		Title_text( ): $mol_paragraph
+		Lives_icon( ): $mol_icon_heart
+		Lives_count( ): $mol_paragraph
+		Lives_counter( ): $mol_view
 		Theme( ): $mol_theme_auto
 		Support( ): $mol_link_support
 		Lights( ): $mol_lights_toggle
@@ -5010,7 +5274,9 @@ declare namespace $ {
 		Chess( ): $giper_balls_chess_game
 		Requisites( ): $giper_balls_requisites
 		Offer( ): $giper_balls_offer
+		Shop( ): $giper_balls_shop
 		menu_title( ): string
+		Menu_title( ): $mol_view
 		plugins( ): readonly(any)[]
 		placeholders( ): readonly(any)[]
 		menu_foot( ): readonly(any)[]
@@ -5020,6 +5286,7 @@ declare namespace $ {
 			'chess': ReturnType< $giper_balls_catalog['Chess'] >,
 			'requisites': ReturnType< $giper_balls_catalog['Requisites'] >,
 			'offer': ReturnType< $giper_balls_catalog['Offer'] >,
+			'shop': ReturnType< $giper_balls_catalog['Shop'] >,
 		}) 
 	}
 	
