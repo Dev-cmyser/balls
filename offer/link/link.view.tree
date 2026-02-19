@@ -1,0 +1,6 @@
+$giper_balls_offer_link $mol_link
+	hint @ \Публичная оферта
+	arg *
+		offer \
+	sub /
+		<= Icon $mol_icon_file_document

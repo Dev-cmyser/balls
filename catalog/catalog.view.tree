@@ -23,3 +23,7 @@ $giper_balls_catalog $mol_book2_catalog
 			tools /
 				^
 				<= Spread_close
+		offer <= Offer $giper_balls_offer
+			tools /
+				^
+				<= Spread_close
