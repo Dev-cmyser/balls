@@ -64,7 +64,7 @@ namespace $.$$ {
 			flexDirection: 'column',
 			alignItems: 'center',
 			gap: $mol_gap.text,
-			marginBottom: $mol_gap.block,
+			margin: { bottom: $mol_gap.block },
 		},
 
 		Product_1_title: {
@@ -86,7 +86,7 @@ namespace $.$$ {
 			fontSize: '3rem',
 			fontWeight: 'bold',
 			margin: 0,
-			lineHeight: 1,
+			lineHeight: '1',
 		},
 
 		Price_1_currency: {
@@ -125,7 +125,9 @@ namespace $.$$ {
 			flexDirection: 'column',
 			alignItems: 'center',
 			gap: $mol_gap.text,
-			marginBottom: $mol_gap.block,
+			margin: {
+				bottom: $mol_gap.block,
+			},
 		},
 
 		Product_3_badge: {
@@ -166,7 +168,7 @@ namespace $.$$ {
 			fontSize: '3rem',
 			fontWeight: 'bold',
 			margin: 0,
-			lineHeight: 1,
+			lineHeight: '1',
 		},
 
 		Price_3_currency: {
@@ -205,7 +207,7 @@ namespace $.$$ {
 			flexDirection: 'column',
 			alignItems: 'center',
 			gap: $mol_gap.text,
-			marginBottom: $mol_gap.block,
+			margin: { bottom: $mol_gap.block },
 		},
 
 		Product_5_badge: {
@@ -252,7 +254,7 @@ namespace $.$$ {
 			fontSize: '3.5rem',
 			fontWeight: 'bold',
 			margin: 0,
-			lineHeight: 1,
+			lineHeight: '1',
 			color: $mol_theme.special,
 		},
 
