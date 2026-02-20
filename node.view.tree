@@ -1062,6 +1062,11 @@ $giper_balls_shop $mol_page
 						<= Buy_5 $mol_button_major
 							title @ \Купить
 							click? <=> buy_5? null
+		<= Checkout_info $mol_view
+			sub <= checkout_info_content /
+		<= Checkout $mol_view
+			dom_name \div
+			attr * id \yookassa-checkout
 		<= Footer $mol_paragraph
 			title @ \Оплата через ЮKassa • Моментальное зачисление
 

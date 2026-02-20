@@ -5152,7 +5152,24 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_giper_balls_shop_35 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_35 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['checkout_info_content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__dom_name_giper_balls_shop_36 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_view['dom_name'] >
+	>
+	type $mol_view__attr_giper_balls_shop_37 = $mol_type_enforce<
+		({ 
+			'id': string,
+		}) 
+		,
+		ReturnType< $mol_view['attr'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_38 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
@@ -5193,6 +5210,9 @@ declare namespace $ {
 		Buy_5( ): $mol_button_major
 		Product_5( ): $mol_view
 		Products( ): $mol_view
+		checkout_info_content( ): readonly(any)[]
+		Checkout_info( ): $mol_view
+		Checkout( ): $mol_view
 		Footer( ): $mol_paragraph
 		title( ): string
 		body( ): readonly(any)[]
@@ -5203,6 +5223,8 @@ declare namespace $ {
 //# sourceMappingURL=shop.view.tree.d.ts.map
 declare namespace $.$$ {
     class $giper_balls_shop extends $.$giper_balls_shop {
+        selected_product(next?: string | null): string | null;
+        checkout_info_content(): string[];
         buy_product(product_id: string): void;
         buy_1(): void;
         buy_3(): void;

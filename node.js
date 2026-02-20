@@ -13407,6 +13407,20 @@ var $;
 			]);
 			return obj;
 		}
+		checkout_info_content(){
+			return [];
+		}
+		Checkout_info(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.checkout_info_content()));
+			return obj;
+		}
+		Checkout(){
+			const obj = new this.$.$mol_view();
+			(obj.dom_name) = () => ("div");
+			(obj.attr) = () => ({"id": "yookassa-checkout"});
+			return obj;
+		}
 		Footer(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Footer_title")));
@@ -13420,6 +13434,8 @@ var $;
 				(this.Info()), 
 				(this.Description()), 
 				(this.Products()), 
+				(this.Checkout_info()), 
+				(this.Checkout()), 
 				(this.Footer())
 			];
 		}
@@ -13459,6 +13475,8 @@ var $;
 	($mol_mem(($.$giper_balls_shop.prototype), "Buy_5"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Product_5"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Products"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Checkout_info"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Checkout"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Footer"));
 
 
@@ -13740,8 +13758,26 @@ var $;
     var $$;
     (function ($$) {
         const WORKER_URL = 'https://giper-balls-payments.cmyser-fast-i.workers.dev';
+        const PRODUCTS = {
+            lives_1: { label: '1 жизнь', price: '200 ₽' },
+            lives_3: { label: '3 жизни', price: '400 ₽' },
+            lives_5: { label: '5 жизней', price: '500 ₽' },
+        };
         class $giper_balls_shop extends $.$giper_balls_shop {
+            selected_product(next) {
+                return next ?? null;
+            }
+            checkout_info_content() {
+                const id = this.selected_product();
+                if (!id)
+                    return [];
+                const product = PRODUCTS[id];
+                if (!product)
+                    return [];
+                return [`${product.label} — ${product.price}`];
+            }
             buy_product(product_id) {
+                this.selected_product(product_id);
                 const response = this.$.$mol_fetch.json(`${WORKER_URL}/create-payment`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -13751,13 +13787,15 @@ var $;
                     payment_id: response.payment_id,
                     lives: response.lives,
                 });
-                const checkout = new this.$.$mol_dom_context.YooMoneyCheckoutWidget({
-                    confirmation_token: response.confirmation_token,
-                    error_callback: (error) => {
-                        console.error('YooKassa error', error);
-                    },
-                });
-                checkout.render('yookassa-checkout');
+                setTimeout(() => {
+                    const checkout = new this.$.$mol_dom_context.YooMoneyCheckoutWidget({
+                        confirmation_token: response.confirmation_token,
+                        error_callback: (error) => {
+                            console.error('YooKassa error', error);
+                        },
+                    });
+                    checkout.render('yookassa-checkout');
+                }, 100);
             }
             buy_1() {
                 this.buy_product('lives_1');
@@ -13769,6 +13807,9 @@ var $;
                 this.buy_product('lives_5');
             }
         }
+        __decorate([
+            $mol_mem
+        ], $giper_balls_shop.prototype, "selected_product", null);
         __decorate([
             $mol_action
         ], $giper_balls_shop.prototype, "buy_product", null);
@@ -14033,6 +14074,12 @@ var $;
             },
             Buy_5: {
                 width: '100%',
+            },
+            Checkout_info: {
+                textAlign: 'center',
+                padding: $mol_gap.block,
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
             },
             Footer: {
                 textAlign: 'center',
