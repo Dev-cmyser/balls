@@ -13214,6 +13214,9 @@ var $;
 
 ;
 	($.$giper_balls_shop) = class $giper_balls_shop extends ($.$mol_page) {
+		check_pending(){
+			return null;
+		}
 		Info_icon(){
 			const obj = new this.$.$mol_icon_heart();
 			return obj;
@@ -13428,6 +13431,9 @@ var $;
 		}
 		title(){
 			return (this.$.$mol_locale.text("$giper_balls_shop_title"));
+		}
+		auto(){
+			return [(this.check_pending())];
 		}
 		body(){
 			return [
@@ -13776,6 +13782,9 @@ var $;
                     return [];
                 return [`${product.label} — ${product.price}`];
             }
+            check_pending() {
+                this.verify_payment();
+            }
             buy_product(product_id) {
                 this.selected_product(product_id);
                 const response = this.$.$mol_fetch.json(`${WORKER_URL}/create-payment`, {
@@ -13787,31 +13796,56 @@ var $;
                     payment_id: response.payment_id,
                     lives: response.lives,
                 });
-                const self = this;
+                const payment_id = response.payment_id;
                 setTimeout(() => {
-                    const checkout = new self.$.$mol_dom_context.YooMoneyCheckoutWidget({
+                    const checkout = new globalThis.YooMoneyCheckoutWidget({
                         confirmation_token: response.confirmation_token,
                         error_callback: (error) => {
                             console.error('YooKassa error', error);
                         },
                     });
-                    const result = checkout.render('yookassa-checkout');
-                    result.on('complete', () => {
-                        checkout.destroy();
-                        self.verify_payment();
-                    });
+                    checkout.render('yookassa-checkout');
+                    const poll = async () => {
+                        try {
+                            const resp = await fetch(`${WORKER_URL}/check-payment?id=${payment_id}`);
+                            const result = await resp.json();
+                            console.log('Poll result:', result);
+                            if (result.status === 'succeeded' && result.paid) {
+                                checkout.destroy();
+                                const raw = localStorage.getItem('$giper_balls:lives');
+                                const current = raw !== null ? Number(raw) : 5;
+                                localStorage.setItem('$giper_balls:lives', String(current + result.lives));
+                                localStorage.removeItem('$giper_balls:pending_payment');
+                                location.reload();
+                                return;
+                            }
+                        }
+                        catch (e) {
+                            console.error('Poll error:', e);
+                        }
+                        setTimeout(poll, 1000);
+                    };
+                    setTimeout(poll, 2000);
                 }, 100);
             }
             verify_payment() {
-                const pending = this.$.$mol_state_local.value('$giper_balls:pending_payment');
-                if (!pending)
+                const raw = localStorage.getItem('$giper_balls:pending_payment');
+                if (!raw)
                     return;
+                let pending;
+                try {
+                    pending = JSON.parse(raw);
+                }
+                catch {
+                    return;
+                }
                 const result = this.$.$mol_fetch.json(`${WORKER_URL}/check-payment?id=${pending.payment_id}`);
+                console.log('Verify pending result:', result);
                 if (result.status === 'succeeded' && result.paid) {
                     const current = this.$.$mol_state_local.value('$giper_balls:lives') ?? 5;
                     this.$.$mol_state_local.value('$giper_balls:lives', current + result.lives);
                 }
-                this.$.$mol_state_local.value('$giper_balls:pending_payment', null);
+                localStorage.removeItem('$giper_balls:pending_payment');
                 this.selected_product(null);
             }
             buy_1() {
@@ -13827,6 +13861,9 @@ var $;
         __decorate([
             $mol_mem
         ], $giper_balls_shop.prototype, "selected_product", null);
+        __decorate([
+            $mol_mem
+        ], $giper_balls_shop.prototype, "check_pending", null);
         __decorate([
             $mol_action
         ], $giper_balls_shop.prototype, "buy_product", null);

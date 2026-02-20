@@ -5175,6 +5175,7 @@ declare namespace $ {
 		ReturnType< $mol_paragraph['title'] >
 	>
 	export class $giper_balls_shop extends $mol_page {
+		check_pending( ): any
 		Info_icon( ): $mol_icon_heart
 		Info_text( ): $mol_paragraph
 		Info( ): $mol_view
@@ -5215,6 +5216,7 @@ declare namespace $ {
 		Checkout( ): $mol_view
 		Footer( ): $mol_paragraph
 		title( ): string
+		auto( ): readonly(any)[]
 		body( ): readonly(any)[]
 	}
 	
@@ -5225,6 +5227,7 @@ declare namespace $.$$ {
     class $giper_balls_shop extends $.$giper_balls_shop {
         selected_product(next?: string | null): string | null;
         checkout_info_content(): string[];
+        check_pending(): void;
         buy_product(product_id: string): void;
         verify_payment(): void;
         buy_1(): void;
