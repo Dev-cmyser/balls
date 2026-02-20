@@ -3151,6 +3151,8 @@ declare namespace $ {
 		size( ): number
 		colors( ): readonly(any)[]
 		mood_smiles( ): readonly(any)[]
+		lives( next?: number ): number
+		spend_life( next?: boolean ): boolean
 		active_cell( next?: readonly(number)[] ): readonly(number)[]
 		score( next?: number ): number
 		event( ): ({ 
@@ -3165,6 +3167,8 @@ declare namespace $ {
 //# sourceMappingURL=game.view.tree.d.ts.map
 declare namespace $.$$ {
     class $giper_balls_game extends $.$giper_balls_game {
+        lives(next?: number): number;
+        spend_life(): boolean;
         rows(): $mol_view[];
         cells(row: number): $mol_stack[];
         cell_active(id: [number, number], next?: boolean): boolean;
@@ -5309,12 +5313,7 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_giper_balls_shop_35 = $mol_type_enforce<
-		ReturnType< $giper_balls_shop['widget_overlay_content'] >
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_paragraph__title_giper_balls_shop_36 = $mol_type_enforce<
+	type $mol_paragraph__title_giper_balls_shop_35 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
@@ -5355,8 +5354,6 @@ declare namespace $ {
 		Buy_5( ): $mol_button_major
 		Product_5( ): $mol_view
 		Products( ): $mol_view
-		widget_overlay_content( ): readonly(any)[]
-		Widget_overlay( ): $mol_view
 		Footer( ): $mol_paragraph
 		title( ): string
 		body( ): readonly(any)[]
@@ -5367,18 +5364,7 @@ declare namespace $ {
 //# sourceMappingURL=shop.view.tree.d.ts.map
 declare namespace $.$$ {
     class $giper_balls_shop extends $.$giper_balls_shop {
-        active_payment(next?: {
-            payment_id: string;
-            lives: number;
-        } | null): {
-            payment_id: string;
-            lives: number;
-        } | null;
-        widget_overlay_content(): $mol_view[];
-        Widget_container(): $mol_view;
         buy_product(product_id: string): void;
-        render_widget(token: string): void;
-        verify_payment(): void;
         buy_1(): void;
         buy_3(): void;
         buy_5(): void;

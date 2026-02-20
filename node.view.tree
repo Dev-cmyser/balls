@@ -449,6 +449,8 @@ $giper_balls_game $mol_page
 		\=^__^=
 		\=*_*=
 		\=*__*=
+	lives? 5
+	spend_life? false
 	active_cell? /number
 	score? 0
 	event *
@@ -1060,8 +1062,6 @@ $giper_balls_shop $mol_page
 						<= Buy_5 $mol_button_major
 							title @ \Купить
 							click? <=> buy_5? null
-		<= Widget_overlay $mol_view
-			sub <= widget_overlay_content /
 		<= Footer $mol_paragraph
 			title @ \Оплата через ЮKassa • Моментальное зачисление
 
