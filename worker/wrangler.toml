@@ -3,7 +3,7 @@ main = "src/index.ts"
 compatibility_date = "2024-01-01"
 
 [vars]
-ALLOWED_ORIGIN = "https://dev-cmyser.github.io/balls/"
+ALLOWED_ORIGIN = "https://dev-cmyser.github.io"
 
 # Secrets (set via CLI, never in code):
 # wrangler secret put YOOKASSA_SHOP_ID
