@@ -1081,6 +1081,8 @@ $giper_balls_catalog $mol_book2_catalog
 					<= Lives_icon $mol_icon_heart
 					<= Lives_count $mol_paragraph
 						title <= lives_text \5
+	auto /
+		<= lives_regen null
 	plugins /
 		<= Theme $mol_theme_auto
 	placeholders /

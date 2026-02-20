@@ -5387,6 +5387,7 @@ declare namespace $.$$ {
         selected_product(next?: string | null): string | null;
         checkout_info_content(): string[];
         buy_product(product_id: string): void;
+        verify_payment(): void;
         buy_1(): void;
         buy_3(): void;
         buy_5(): void;
@@ -5466,6 +5467,7 @@ declare namespace $ {
 		lives_text( ): string
 		Lives_count( ): $mol_paragraph
 		Lives_counter( ): $mol_view
+		lives_regen( ): any
 		Theme( ): $mol_theme_auto
 		Support( ): $mol_link_support
 		Lights( ): $mol_lights_toggle
@@ -5477,6 +5479,7 @@ declare namespace $ {
 		Shop( ): $giper_balls_shop
 		menu_title( ): string
 		Menu_title( ): $mol_view
+		auto( ): readonly(any)[]
 		plugins( ): readonly(any)[]
 		placeholders( ): readonly(any)[]
 		menu_foot( ): readonly(any)[]
@@ -5496,6 +5499,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $giper_balls_catalog extends $.$giper_balls_catalog {
         lives(next?: number): number;
+        lives_regen(): void;
         lives_text(): string;
     }
 }

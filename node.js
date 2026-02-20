@@ -13787,15 +13787,32 @@ var $;
                     payment_id: response.payment_id,
                     lives: response.lives,
                 });
+                const self = this;
                 setTimeout(() => {
-                    const checkout = new this.$.$mol_dom_context.YooMoneyCheckoutWidget({
+                    const checkout = new self.$.$mol_dom_context.YooMoneyCheckoutWidget({
                         confirmation_token: response.confirmation_token,
                         error_callback: (error) => {
                             console.error('YooKassa error', error);
                         },
                     });
-                    checkout.render('yookassa-checkout');
+                    const result = checkout.render('yookassa-checkout');
+                    result.on('complete', () => {
+                        checkout.destroy();
+                        self.verify_payment();
+                    });
                 }, 100);
+            }
+            verify_payment() {
+                const pending = this.$.$mol_state_local.value('$giper_balls:pending_payment');
+                if (!pending)
+                    return;
+                const result = this.$.$mol_fetch.json(`${WORKER_URL}/check-payment?id=${pending.payment_id}`);
+                if (result.status === 'succeeded' && result.paid) {
+                    const current = this.$.$mol_state_local.value('$giper_balls:lives') ?? 5;
+                    this.$.$mol_state_local.value('$giper_balls:lives', current + result.lives);
+                }
+                this.$.$mol_state_local.value('$giper_balls:pending_payment', null);
+                this.selected_product(null);
             }
             buy_1() {
                 this.buy_product('lives_1');
@@ -14115,6 +14132,9 @@ var $;
 			(obj.sub) = () => ([(this.Lives_icon()), (this.Lives_count())]);
 			return obj;
 		}
+		lives_regen(){
+			return null;
+		}
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
@@ -14165,6 +14185,9 @@ var $;
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ([(this.Title_text()), (this.Lives_counter())]);
 			return obj;
+		}
+		auto(){
+			return [(this.lives_regen())];
 		}
 		plugins(){
 			return [(this.Theme())];
@@ -14231,9 +14254,27 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
+        const MAX_LIVES = 5;
+        const REGEN_MS = 30 * 60 * 1000;
         class $giper_balls_catalog extends $.$giper_balls_catalog {
             lives(next) {
-                return this.$.$mol_state_local.value('$giper_balls:lives', next) ?? 5;
+                if (next !== undefined) {
+                    this.$.$mol_state_local.value('$giper_balls:lives_lost_at', Date.now());
+                }
+                return this.$.$mol_state_local.value('$giper_balls:lives', next) ?? MAX_LIVES;
+            }
+            lives_regen() {
+                const current = this.lives();
+                if (current >= MAX_LIVES)
+                    return;
+                const lost_at = this.$.$mol_state_local.value('$giper_balls:lives_lost_at') ?? Date.now();
+                const elapsed = Date.now() - lost_at;
+                const gained = Math.floor(elapsed / REGEN_MS);
+                if (gained > 0) {
+                    const new_lives = Math.min(current + gained, MAX_LIVES);
+                    this.lives(new_lives);
+                }
+                this.$.$mol_state_time.now(REGEN_MS);
             }
             lives_text() {
                 return String(this.lives());
@@ -14242,6 +14283,9 @@ var $;
         __decorate([
             $mol_mem
         ], $giper_balls_catalog.prototype, "lives", null);
+        __decorate([
+            $mol_mem
+        ], $giper_balls_catalog.prototype, "lives_regen", null);
         $$.$giper_balls_catalog = $giper_balls_catalog;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
