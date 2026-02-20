@@ -42,15 +42,40 @@ namespace $.$$ {
 				lives: response.lives,
 			})
 
+			const self = this
+
 			setTimeout( () => {
-				const checkout = new (this.$.$mol_dom_context as any).YooMoneyCheckoutWidget({
+				const checkout = new (self.$.$mol_dom_context as any).YooMoneyCheckoutWidget({
 					confirmation_token: response.confirmation_token,
 					error_callback: ( error: any ) => {
 						console.error( 'YooKassa error', error )
 					},
 				})
-				checkout.render( 'yookassa-checkout' )
+
+				const result = checkout.render( 'yookassa-checkout' )
+
+				result.on( 'complete', () => {
+					checkout.destroy()
+					self.verify_payment()
+				})
 			}, 100 )
+		}
+
+		verify_payment() {
+			const pending = this.$.$mol_state_local.value( '$giper_balls:pending_payment' ) as { payment_id: string; lives: number } | null
+			if( !pending ) return
+
+			const result = this.$.$mol_fetch.json(
+				`${ WORKER_URL }/check-payment?id=${ pending.payment_id }`,
+			) as { status: string; paid: boolean; lives: number }
+
+			if( result.status === 'succeeded' && result.paid ) {
+				const current = ( this.$.$mol_state_local.value( '$giper_balls:lives' ) as number | null ) ?? 5
+				this.$.$mol_state_local.value( '$giper_balls:lives', current + result.lives )
+			}
+
+			this.$.$mol_state_local.value( '$giper_balls:pending_payment', null )
+			this.selected_product( null )
 		}
 
 		@ $mol_action
