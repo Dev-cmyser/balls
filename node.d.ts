@@ -5020,6 +5020,124 @@ declare namespace $ {
 
 //# sourceMappingURL=major.view.tree.d.ts.map
 declare namespace $ {
+    enum $mol_rest_code {
+        'Continue' = 100,
+        'Switching protocols' = 101,
+        'Processing' = 102,
+        'OK' = 200,
+        'Created' = 201,
+        'Accepted' = 202,
+        'Non-Authoritative Information' = 203,
+        'No Content' = 204,
+        'Reset Content' = 205,
+        'Partial Content' = 206,
+        'Multi Status' = 207,
+        'Already Reported' = 208,
+        'IM Used' = 226,
+        'Multiple Choices' = 300,
+        'Moved Permanently' = 301,
+        'Found' = 302,
+        'See Other' = 303,
+        'Not Modified' = 304,
+        'Use Proxy' = 305,
+        'Temporary Redirect' = 307,
+        'Bad Request' = 400,
+        'Unauthorized' = 401,
+        'Payment Required' = 402,
+        'Forbidden' = 403,
+        'Not Found' = 404,
+        'Method Not Allowed' = 405,
+        'Not Acceptable' = 406,
+        'Proxy Authentication Required' = 407,
+        'Request Timeout' = 408,
+        'Conflict' = 409,
+        'Gone' = 410,
+        'Length Required' = 411,
+        'Precondition Failed' = 412,
+        'Request Entity Too Large' = 413,
+        'Request URI Too Long' = 414,
+        'Unsupported Media Type' = 415,
+        'Requested Range Not Satisfiable' = 416,
+        'Expectation Failed' = 417,
+        'Teapot' = 418,
+        'Unprocessable Entity' = 422,
+        'Locked' = 423,
+        'Failed Dependency' = 424,
+        'Upgrade Required' = 426,
+        'Precondition Required' = 428,
+        'Too Many Requests' = 429,
+        'Request Header Fields Too Large' = 431,
+        'Unavailable For Legal Reasons' = 451,
+        'Internal Server Error' = 500,
+        'Not Implemented' = 501,
+        'Bad Gateway' = 502,
+        'Service Unavailable' = 503,
+        'Gateway Timeout' = 504,
+        'HTTP Version Not Supported' = 505,
+        'Insufficient Storage' = 507,
+        'Loop Detected' = 508,
+        'Not Extended' = 510,
+        'Network Authentication Required' = 511,
+        'Network Read Timeout Error' = 598,
+        'Network Connect Timeout Error' = 599
+    }
+}
+
+declare namespace $ {
+    function $mol_error_fence<Data>(task: () => Data, fallback: (parent: Error) => Error | Data | PromiseLike<Data>, loading?: (parent: PromiseLike<Data>) => Error | Data | PromiseLike<Data>): Data;
+}
+
+declare namespace $ {
+    function $mol_error_enriched<V>(cause: {}, cb: () => V): V;
+}
+
+declare namespace $ {
+    function $mol_dom_parse(text: string, type?: DOMParserSupportedType): Document;
+}
+
+declare namespace $ {
+    class $mol_fetch_response extends $mol_object {
+        readonly native: Response;
+        readonly request: $mol_fetch_request;
+        status(): "unknown" | "success" | "inform" | "redirect" | "wrong" | "failed";
+        code(): number;
+        ok(): boolean;
+        message(): string;
+        headers(): Headers;
+        mime(): string | null;
+        stream(): ReadableStream<Uint8Array<ArrayBuffer>> | null;
+        text(): string;
+        json(): unknown;
+        blob(): Blob;
+        buffer(): ArrayBuffer;
+        xml(): Document;
+        xhtml(): Document;
+        html(): Document;
+    }
+    class $mol_fetch_request extends $mol_object {
+        readonly native: Request;
+        response_async(): Promise<Response> & {
+            destructor: () => void;
+        };
+        response(): $mol_fetch_response;
+        success(): $mol_fetch_response;
+    }
+    class $mol_fetch extends $mol_object {
+        static request(input: RequestInfo, init?: RequestInit): $mol_fetch_request;
+        static response(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
+        static success(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
+        static stream(input: RequestInfo, init?: RequestInit): ReadableStream<Uint8Array<ArrayBuffer>> | null;
+        static text(input: RequestInfo, init?: RequestInit): string;
+        static json(input: RequestInfo, init?: RequestInit): unknown;
+        static blob(input: RequestInfo, init?: RequestInit): Blob;
+        static buffer(input: RequestInfo, init?: RequestInit): ArrayBuffer;
+        static xml(input: RequestInfo, init?: RequestInit): Document;
+        static xhtml(input: RequestInfo, init?: RequestInit): Document;
+        static html(input: RequestInfo, init?: RequestInit): Document;
+    }
+}
+
+declare namespace $ {
 
 	type $mol_paragraph__title_giper_balls_shop_1 = $mol_type_enforce<
 		string
@@ -5191,7 +5309,12 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_giper_balls_shop_35 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_35 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['widget_overlay_content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_36 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
@@ -5232,6 +5355,8 @@ declare namespace $ {
 		Buy_5( ): $mol_button_major
 		Product_5( ): $mol_view
 		Products( ): $mol_view
+		widget_overlay_content( ): readonly(any)[]
+		Widget_overlay( ): $mol_view
 		Footer( ): $mol_paragraph
 		title( ): string
 		body( ): readonly(any)[]
@@ -5242,6 +5367,18 @@ declare namespace $ {
 //# sourceMappingURL=shop.view.tree.d.ts.map
 declare namespace $.$$ {
     class $giper_balls_shop extends $.$giper_balls_shop {
+        active_payment(next?: {
+            payment_id: string;
+            lives: number;
+        } | null): {
+            payment_id: string;
+            lives: number;
+        } | null;
+        widget_overlay_content(): $mol_view[];
+        Widget_container(): $mol_view;
+        buy_product(product_id: string): void;
+        render_widget(token: string): void;
+        verify_payment(): void;
         buy_1(): void;
         buy_3(): void;
         buy_5(): void;
@@ -5259,9 +5396,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
 
 	type $mol_paragraph__title_giper_balls_catalog_1 = $mol_type_enforce<
 		ReturnType< $giper_balls_catalog['menu_title'] >
@@ -5269,7 +5403,7 @@ declare namespace $ {
 		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_paragraph__title_giper_balls_catalog_2 = $mol_type_enforce<
-		string
+		ReturnType< $giper_balls_catalog['lives_text'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
@@ -5321,6 +5455,7 @@ declare namespace $ {
 	export class $giper_balls_catalog extends $mol_book2_catalog {
 		Title_text( ): $mol_paragraph
 		Lives_icon( ): $mol_icon_heart
+		lives_text( ): string
 		Lives_count( ): $mol_paragraph
 		Lives_counter( ): $mol_view
 		Theme( ): $mol_theme_auto
@@ -5350,6 +5485,16 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=catalog.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $giper_balls_catalog extends $.$giper_balls_catalog {
+        lives(next?: number): number;
+        lives_text(): string;
+    }
+}
+
+declare namespace $ {
+}
+
 declare namespace $.$$ {
 }
 

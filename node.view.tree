@@ -1060,6 +1060,8 @@ $giper_balls_shop $mol_page
 						<= Buy_5 $mol_button_major
 							title @ \Купить
 							click? <=> buy_5? null
+		<= Widget_overlay $mol_view
+			sub <= widget_overlay_content /
 		<= Footer $mol_paragraph
 			title @ \Оплата через ЮKassa • Моментальное зачисление
 
@@ -1073,7 +1075,7 @@ $giper_balls_catalog $mol_book2_catalog
 				sub /
 					<= Lives_icon $mol_icon_heart
 					<= Lives_count $mol_paragraph
-						title \5
+						title <= lives_text \5
 	plugins /
 		<= Theme $mol_theme_auto
 	placeholders /

@@ -5148,7 +5148,12 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_giper_balls_shop_35 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_shop_35 = $mol_type_enforce<
+		ReturnType< $giper_balls_shop['widget_overlay_content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_giper_balls_shop_36 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_paragraph['title'] >
@@ -5189,6 +5194,8 @@ declare namespace $ {
 		Buy_5( ): $mol_button_major
 		Product_5( ): $mol_view
 		Products( ): $mol_view
+		widget_overlay_content( ): readonly(any)[]
+		Widget_overlay( ): $mol_view
 		Footer( ): $mol_paragraph
 		title( ): string
 		body( ): readonly(any)[]
@@ -5199,6 +5206,18 @@ declare namespace $ {
 //# sourceMappingURL=shop.view.tree.d.ts.map
 declare namespace $.$$ {
     class $giper_balls_shop extends $.$giper_balls_shop {
+        active_payment(next?: {
+            payment_id: string;
+            lives: number;
+        } | null): {
+            payment_id: string;
+            lives: number;
+        } | null;
+        widget_overlay_content(): $mol_view[];
+        Widget_container(): $mol_view;
+        buy_product(product_id: string): void;
+        render_widget(token: string): void;
+        verify_payment(): void;
         buy_1(): void;
         buy_3(): void;
         buy_5(): void;
@@ -5220,9 +5239,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
 
 	type $mol_paragraph__title_giper_balls_catalog_1 = $mol_type_enforce<
 		ReturnType< $giper_balls_catalog['menu_title'] >
@@ -5230,7 +5246,7 @@ declare namespace $ {
 		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_paragraph__title_giper_balls_catalog_2 = $mol_type_enforce<
-		string
+		ReturnType< $giper_balls_catalog['lives_text'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
@@ -5282,6 +5298,7 @@ declare namespace $ {
 	export class $giper_balls_catalog extends $mol_book2_catalog {
 		Title_text( ): $mol_paragraph
 		Lives_icon( ): $mol_icon_heart
+		lives_text( ): string
 		Lives_count( ): $mol_paragraph
 		Lives_counter( ): $mol_view
 		Theme( ): $mol_theme_auto
@@ -5311,6 +5328,16 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=catalog.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $giper_balls_catalog extends $.$giper_balls_catalog {
+        lives(next?: number): number;
+        lives_text(): string;
+    }
+}
+
+declare namespace $ {
+}
+
 declare namespace $.$$ {
 }
 

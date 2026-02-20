@@ -13028,6 +13028,14 @@ var $;
 			]);
 			return obj;
 		}
+		widget_overlay_content(){
+			return [];
+		}
+		Widget_overlay(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.widget_overlay_content()));
+			return obj;
+		}
 		Footer(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Footer_title")));
@@ -13041,6 +13049,7 @@ var $;
 				(this.Info()), 
 				(this.Description()), 
 				(this.Products()), 
+				(this.Widget_overlay()), 
 				(this.Footer())
 			];
 		}
@@ -13080,6 +13089,7 @@ var $;
 	($mol_mem(($.$giper_balls_shop.prototype), "Buy_5"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Product_5"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Products"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Widget_overlay"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Footer"));
 
 
@@ -13092,26 +13102,82 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
+        const WORKER_URL = 'https://giper-balls-payments.cmyser-fast-i.workers.dev';
         class $giper_balls_shop extends $.$giper_balls_shop {
-            buy_1() {
-                this.$.$mol_log3_rise({
-                    place: this,
-                    message: 'Покупка 1 жизни',
+            active_payment(next) {
+                return next ?? null;
+            }
+            widget_overlay_content() {
+                if (!this.active_payment())
+                    return [];
+                return [this.Widget_container()];
+            }
+            Widget_container() {
+                const el = this.$.$mol_dom_context.document.createElement('div');
+                el.id = 'yookassa-widget-container';
+                const view = new this.$.$mol_view();
+                view.dom_node = () => el;
+                return view;
+            }
+            buy_product(product_id) {
+                const response = this.$.$mol_fetch.json(`${WORKER_URL}/create-payment`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ product_id }),
                 });
+                this.active_payment({
+                    payment_id: response.payment_id,
+                    lives: response.lives,
+                });
+                setTimeout(() => this.render_widget(response.confirmation_token), 100);
+            }
+            render_widget(token) {
+                const widget = new YooMoneyCheckoutWidget({
+                    confirmation_token: token,
+                    error_callback: (error) => {
+                        console.error('YooKassa widget error', error);
+                        this.active_payment(null);
+                    },
+                });
+                const checkout = widget.render('yookassa-widget-container');
+                checkout.on('complete', () => {
+                    widget.destroy();
+                    this.verify_payment();
+                });
+            }
+            verify_payment() {
+                const payment = this.active_payment();
+                if (!payment)
+                    return;
+                const result = this.$.$mol_fetch.json(`${WORKER_URL}/check-payment?id=${payment.payment_id}`);
+                if (result.status === 'succeeded' && result.paid) {
+                    const current = this.$.$mol_state_local.value('$giper_balls:lives') ?? 5;
+                    this.$.$mol_state_local.value('$giper_balls:lives', current + result.lives);
+                }
+                this.active_payment(null);
+            }
+            buy_1() {
+                this.buy_product('lives_1');
             }
             buy_3() {
-                this.$.$mol_log3_rise({
-                    place: this,
-                    message: 'Покупка 3 жизней',
-                });
+                this.buy_product('lives_3');
             }
             buy_5() {
-                this.$.$mol_log3_rise({
-                    place: this,
-                    message: 'Покупка 5 жизней',
-                });
+                this.buy_product('lives_5');
             }
         }
+        __decorate([
+            $mol_mem
+        ], $giper_balls_shop.prototype, "active_payment", null);
+        __decorate([
+            $mol_mem
+        ], $giper_balls_shop.prototype, "Widget_container", null);
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "buy_product", null);
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "verify_payment", null);
         __decorate([
             $mol_action
         ], $giper_balls_shop.prototype, "buy_1", null);
@@ -13131,7 +13197,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        const { calc } = $mol_style_func;
+        const { calc, rgba } = $mol_style_func;
         $mol_style_define($giper_balls_shop, {
             Info: {
                 display: 'flex',
@@ -13374,6 +13440,21 @@ var $;
             Buy_5: {
                 width: '100%',
             },
+            Widget_overlay: {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1000,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: {
+                    color: rgba(0, 0, 0, 0.6),
+                },
+                padding: $mol_gap.block,
+            },
             Footer: {
                 textAlign: 'center',
                 fontSize: '0.85rem',
@@ -13395,9 +13476,12 @@ var $;
 			const obj = new this.$.$mol_icon_heart();
 			return obj;
 		}
+		lives_text(){
+			return "5";
+		}
 		Lives_count(){
 			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ("5");
+			(obj.title) = () => ((this.lives_text()));
 			return obj;
 		}
 		Lives_counter(){
@@ -13620,13 +13704,34 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
-    $mol_style_attach("giper/balls/catalog/catalog.view.css", "[giper_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+    var $$;
+    (function ($$) {
+        class $giper_balls_catalog extends $.$giper_balls_catalog {
+            lives(next) {
+                return this.$.$mol_state_local.value('$giper_balls:lives', next) ?? 5;
+            }
+            lives_text() {
+                return String(this.lives());
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $giper_balls_catalog.prototype, "lives", null);
+        $$.$giper_balls_catalog = $giper_balls_catalog;
+    })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
 "use strict";
+var $;
+(function ($) {
+    $mol_style_attach("giper/balls/catalog/catalog.view.css", "[giper_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+})($ || ($ = {}));
 
 ;
 "use strict";

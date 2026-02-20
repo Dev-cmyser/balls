@@ -13377,6 +13377,14 @@ var $;
 			]);
 			return obj;
 		}
+		widget_overlay_content(){
+			return [];
+		}
+		Widget_overlay(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.widget_overlay_content()));
+			return obj;
+		}
 		Footer(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ((this.$.$mol_locale.text("$giper_balls_shop_Footer_title")));
@@ -13390,6 +13398,7 @@ var $;
 				(this.Info()), 
 				(this.Description()), 
 				(this.Products()), 
+				(this.Widget_overlay()), 
 				(this.Footer())
 			];
 		}
@@ -13429,8 +13438,277 @@ var $;
 	($mol_mem(($.$giper_balls_shop.prototype), "Buy_5"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Product_5"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Products"));
+	($mol_mem(($.$giper_balls_shop.prototype), "Widget_overlay"));
 	($mol_mem(($.$giper_balls_shop.prototype), "Footer"));
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    let $mol_rest_code;
+    (function ($mol_rest_code) {
+        $mol_rest_code[$mol_rest_code["Continue"] = 100] = "Continue";
+        $mol_rest_code[$mol_rest_code["Switching protocols"] = 101] = "Switching protocols";
+        $mol_rest_code[$mol_rest_code["Processing"] = 102] = "Processing";
+        $mol_rest_code[$mol_rest_code["OK"] = 200] = "OK";
+        $mol_rest_code[$mol_rest_code["Created"] = 201] = "Created";
+        $mol_rest_code[$mol_rest_code["Accepted"] = 202] = "Accepted";
+        $mol_rest_code[$mol_rest_code["Non-Authoritative Information"] = 203] = "Non-Authoritative Information";
+        $mol_rest_code[$mol_rest_code["No Content"] = 204] = "No Content";
+        $mol_rest_code[$mol_rest_code["Reset Content"] = 205] = "Reset Content";
+        $mol_rest_code[$mol_rest_code["Partial Content"] = 206] = "Partial Content";
+        $mol_rest_code[$mol_rest_code["Multi Status"] = 207] = "Multi Status";
+        $mol_rest_code[$mol_rest_code["Already Reported"] = 208] = "Already Reported";
+        $mol_rest_code[$mol_rest_code["IM Used"] = 226] = "IM Used";
+        $mol_rest_code[$mol_rest_code["Multiple Choices"] = 300] = "Multiple Choices";
+        $mol_rest_code[$mol_rest_code["Moved Permanently"] = 301] = "Moved Permanently";
+        $mol_rest_code[$mol_rest_code["Found"] = 302] = "Found";
+        $mol_rest_code[$mol_rest_code["See Other"] = 303] = "See Other";
+        $mol_rest_code[$mol_rest_code["Not Modified"] = 304] = "Not Modified";
+        $mol_rest_code[$mol_rest_code["Use Proxy"] = 305] = "Use Proxy";
+        $mol_rest_code[$mol_rest_code["Temporary Redirect"] = 307] = "Temporary Redirect";
+        $mol_rest_code[$mol_rest_code["Bad Request"] = 400] = "Bad Request";
+        $mol_rest_code[$mol_rest_code["Unauthorized"] = 401] = "Unauthorized";
+        $mol_rest_code[$mol_rest_code["Payment Required"] = 402] = "Payment Required";
+        $mol_rest_code[$mol_rest_code["Forbidden"] = 403] = "Forbidden";
+        $mol_rest_code[$mol_rest_code["Not Found"] = 404] = "Not Found";
+        $mol_rest_code[$mol_rest_code["Method Not Allowed"] = 405] = "Method Not Allowed";
+        $mol_rest_code[$mol_rest_code["Not Acceptable"] = 406] = "Not Acceptable";
+        $mol_rest_code[$mol_rest_code["Proxy Authentication Required"] = 407] = "Proxy Authentication Required";
+        $mol_rest_code[$mol_rest_code["Request Timeout"] = 408] = "Request Timeout";
+        $mol_rest_code[$mol_rest_code["Conflict"] = 409] = "Conflict";
+        $mol_rest_code[$mol_rest_code["Gone"] = 410] = "Gone";
+        $mol_rest_code[$mol_rest_code["Length Required"] = 411] = "Length Required";
+        $mol_rest_code[$mol_rest_code["Precondition Failed"] = 412] = "Precondition Failed";
+        $mol_rest_code[$mol_rest_code["Request Entity Too Large"] = 413] = "Request Entity Too Large";
+        $mol_rest_code[$mol_rest_code["Request URI Too Long"] = 414] = "Request URI Too Long";
+        $mol_rest_code[$mol_rest_code["Unsupported Media Type"] = 415] = "Unsupported Media Type";
+        $mol_rest_code[$mol_rest_code["Requested Range Not Satisfiable"] = 416] = "Requested Range Not Satisfiable";
+        $mol_rest_code[$mol_rest_code["Expectation Failed"] = 417] = "Expectation Failed";
+        $mol_rest_code[$mol_rest_code["Teapot"] = 418] = "Teapot";
+        $mol_rest_code[$mol_rest_code["Unprocessable Entity"] = 422] = "Unprocessable Entity";
+        $mol_rest_code[$mol_rest_code["Locked"] = 423] = "Locked";
+        $mol_rest_code[$mol_rest_code["Failed Dependency"] = 424] = "Failed Dependency";
+        $mol_rest_code[$mol_rest_code["Upgrade Required"] = 426] = "Upgrade Required";
+        $mol_rest_code[$mol_rest_code["Precondition Required"] = 428] = "Precondition Required";
+        $mol_rest_code[$mol_rest_code["Too Many Requests"] = 429] = "Too Many Requests";
+        $mol_rest_code[$mol_rest_code["Request Header Fields Too Large"] = 431] = "Request Header Fields Too Large";
+        $mol_rest_code[$mol_rest_code["Unavailable For Legal Reasons"] = 451] = "Unavailable For Legal Reasons";
+        $mol_rest_code[$mol_rest_code["Internal Server Error"] = 500] = "Internal Server Error";
+        $mol_rest_code[$mol_rest_code["Not Implemented"] = 501] = "Not Implemented";
+        $mol_rest_code[$mol_rest_code["Bad Gateway"] = 502] = "Bad Gateway";
+        $mol_rest_code[$mol_rest_code["Service Unavailable"] = 503] = "Service Unavailable";
+        $mol_rest_code[$mol_rest_code["Gateway Timeout"] = 504] = "Gateway Timeout";
+        $mol_rest_code[$mol_rest_code["HTTP Version Not Supported"] = 505] = "HTTP Version Not Supported";
+        $mol_rest_code[$mol_rest_code["Insufficient Storage"] = 507] = "Insufficient Storage";
+        $mol_rest_code[$mol_rest_code["Loop Detected"] = 508] = "Loop Detected";
+        $mol_rest_code[$mol_rest_code["Not Extended"] = 510] = "Not Extended";
+        $mol_rest_code[$mol_rest_code["Network Authentication Required"] = 511] = "Network Authentication Required";
+        $mol_rest_code[$mol_rest_code["Network Read Timeout Error"] = 598] = "Network Read Timeout Error";
+        $mol_rest_code[$mol_rest_code["Network Connect Timeout Error"] = 599] = "Network Connect Timeout Error";
+    })($mol_rest_code = $.$mol_rest_code || ($.$mol_rest_code = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function pass(data) {
+        return data;
+    }
+    function $mol_error_fence(task, fallback, loading = pass) {
+        try {
+            return task();
+        }
+        catch (error) {
+            let normalized;
+            try {
+                normalized = $mol_promise_like(error) ? loading(error) : fallback(error);
+            }
+            catch (sub_error) {
+                normalized = $mol_promise_like(sub_error) ? sub_error : new $mol_error_mix(sub_error.message, { error }, sub_error);
+            }
+            if (normalized instanceof Error || $mol_promise_like(normalized)) {
+                $mol_fail_hidden(normalized);
+            }
+            return normalized;
+        }
+    }
+    $.$mol_error_fence = $mol_error_fence;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_error_enriched(cause, cb) {
+        return $mol_error_fence(cb, e => new $mol_error_mix(e.message, cause, e));
+    }
+    $.$mol_error_enriched = $mol_error_enriched;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_dom_parse(text, type = 'application/xhtml+xml') {
+        const parser = new $mol_dom_context.DOMParser();
+        const doc = parser.parseFromString(text, type);
+        const error = doc.getElementsByTagName('parsererror');
+        if (error.length)
+            throw new Error(error[0].textContent);
+        return doc;
+    }
+    $.$mol_dom_parse = $mol_dom_parse;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_fetch_response extends $mol_object {
+        native;
+        request;
+        status() {
+            const types = ['unknown', 'inform', 'success', 'redirect', 'wrong', 'failed'];
+            return types[Math.floor(this.native.status / 100)];
+        }
+        code() {
+            return this.native.status;
+        }
+        ok() {
+            return this.native.ok;
+        }
+        message() {
+            return $mol_rest_code[this.code()] || `HTTP Error ${this.code()}`;
+        }
+        headers() {
+            return this.native.headers;
+        }
+        mime() {
+            return this.headers().get('content-type');
+        }
+        stream() {
+            return this.native.body;
+        }
+        text() {
+            const buffer = this.buffer();
+            const mime = this.mime() || '';
+            const [, charset] = /charset=(.*)/.exec(mime) || [, 'utf-8'];
+            const decoder = new TextDecoder(charset);
+            return decoder.decode(buffer);
+        }
+        json() {
+            return $mol_error_enriched(this, () => $mol_wire_sync(this.native).json());
+        }
+        blob() {
+            return $mol_error_enriched(this, () => $mol_wire_sync(this.native).blob());
+        }
+        buffer() {
+            return $mol_error_enriched(this, () => $mol_wire_sync(this.native).arrayBuffer());
+        }
+        xml() {
+            return $mol_dom_parse(this.text(), 'application/xml');
+        }
+        xhtml() {
+            return $mol_dom_parse(this.text(), 'application/xhtml+xml');
+        }
+        html() {
+            return $mol_dom_parse(this.text(), 'text/html');
+        }
+    }
+    __decorate([
+        $mol_action
+    ], $mol_fetch_response.prototype, "stream", null);
+    __decorate([
+        $mol_action
+    ], $mol_fetch_response.prototype, "text", null);
+    __decorate([
+        $mol_action
+    ], $mol_fetch_response.prototype, "xml", null);
+    __decorate([
+        $mol_action
+    ], $mol_fetch_response.prototype, "xhtml", null);
+    __decorate([
+        $mol_action
+    ], $mol_fetch_response.prototype, "html", null);
+    $.$mol_fetch_response = $mol_fetch_response;
+    class $mol_fetch_request extends $mol_object {
+        native;
+        response_async() {
+            const controller = new AbortController();
+            let done = false;
+            const request = new Request(this.native, { signal: controller.signal });
+            const promise = fetch(request).finally(() => {
+                done = true;
+            });
+            return Object.assign(promise, {
+                destructor: () => {
+                    if (!done && !controller.signal.aborted)
+                        controller.abort();
+                },
+            });
+        }
+        response() {
+            return this.$.$mol_fetch_response.make({
+                native: $mol_wire_sync(this).response_async(),
+                request: this
+            });
+        }
+        success() {
+            const response = this.response();
+            if (response.status() === 'success')
+                return response;
+            throw new Error(response.message(), { cause: response });
+        }
+    }
+    __decorate([
+        $mol_action
+    ], $mol_fetch_request.prototype, "response", null);
+    $.$mol_fetch_request = $mol_fetch_request;
+    class $mol_fetch extends $mol_object {
+        static request(input, init) {
+            return this.$.$mol_fetch_request.make({
+                native: new Request(input, init)
+            });
+        }
+        static response(input, init) {
+            return this.request(input, init).response();
+        }
+        static success(input, init) {
+            return this.request(input, init).success();
+        }
+        static stream(input, init) {
+            return this.success(input, init).stream();
+        }
+        static text(input, init) {
+            return this.success(input, init).text();
+        }
+        static json(input, init) {
+            return this.success(input, init).json();
+        }
+        static blob(input, init) {
+            return this.success(input, init).blob();
+        }
+        static buffer(input, init) {
+            return this.success(input, init).buffer();
+        }
+        static xml(input, init) {
+            return this.success(input, init).xml();
+        }
+        static xhtml(input, init) {
+            return this.success(input, init).xhtml();
+        }
+        static html(input, init) {
+            return this.success(input, init).html();
+        }
+    }
+    __decorate([
+        $mol_action
+    ], $mol_fetch, "request", null);
+    $.$mol_fetch = $mol_fetch;
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -13441,26 +13719,82 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
+        const WORKER_URL = 'https://giper-balls-payments.cmyser-fast-i.workers.dev';
         class $giper_balls_shop extends $.$giper_balls_shop {
-            buy_1() {
-                this.$.$mol_log3_rise({
-                    place: this,
-                    message: 'Покупка 1 жизни',
+            active_payment(next) {
+                return next ?? null;
+            }
+            widget_overlay_content() {
+                if (!this.active_payment())
+                    return [];
+                return [this.Widget_container()];
+            }
+            Widget_container() {
+                const el = this.$.$mol_dom_context.document.createElement('div');
+                el.id = 'yookassa-widget-container';
+                const view = new this.$.$mol_view();
+                view.dom_node = () => el;
+                return view;
+            }
+            buy_product(product_id) {
+                const response = this.$.$mol_fetch.json(`${WORKER_URL}/create-payment`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ product_id }),
                 });
+                this.active_payment({
+                    payment_id: response.payment_id,
+                    lives: response.lives,
+                });
+                setTimeout(() => this.render_widget(response.confirmation_token), 100);
+            }
+            render_widget(token) {
+                const widget = new YooMoneyCheckoutWidget({
+                    confirmation_token: token,
+                    error_callback: (error) => {
+                        console.error('YooKassa widget error', error);
+                        this.active_payment(null);
+                    },
+                });
+                const checkout = widget.render('yookassa-widget-container');
+                checkout.on('complete', () => {
+                    widget.destroy();
+                    this.verify_payment();
+                });
+            }
+            verify_payment() {
+                const payment = this.active_payment();
+                if (!payment)
+                    return;
+                const result = this.$.$mol_fetch.json(`${WORKER_URL}/check-payment?id=${payment.payment_id}`);
+                if (result.status === 'succeeded' && result.paid) {
+                    const current = this.$.$mol_state_local.value('$giper_balls:lives') ?? 5;
+                    this.$.$mol_state_local.value('$giper_balls:lives', current + result.lives);
+                }
+                this.active_payment(null);
+            }
+            buy_1() {
+                this.buy_product('lives_1');
             }
             buy_3() {
-                this.$.$mol_log3_rise({
-                    place: this,
-                    message: 'Покупка 3 жизней',
-                });
+                this.buy_product('lives_3');
             }
             buy_5() {
-                this.$.$mol_log3_rise({
-                    place: this,
-                    message: 'Покупка 5 жизней',
-                });
+                this.buy_product('lives_5');
             }
         }
+        __decorate([
+            $mol_mem
+        ], $giper_balls_shop.prototype, "active_payment", null);
+        __decorate([
+            $mol_mem
+        ], $giper_balls_shop.prototype, "Widget_container", null);
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "buy_product", null);
+        __decorate([
+            $mol_action
+        ], $giper_balls_shop.prototype, "verify_payment", null);
         __decorate([
             $mol_action
         ], $giper_balls_shop.prototype, "buy_1", null);
@@ -13480,7 +13814,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        const { calc } = $mol_style_func;
+        const { calc, rgba } = $mol_style_func;
         $mol_style_define($giper_balls_shop, {
             Info: {
                 display: 'flex',
@@ -13723,6 +14057,21 @@ var $;
             Buy_5: {
                 width: '100%',
             },
+            Widget_overlay: {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1000,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: {
+                    color: rgba(0, 0, 0, 0.6),
+                },
+                padding: $mol_gap.block,
+            },
             Footer: {
                 textAlign: 'center',
                 fontSize: '0.85rem',
@@ -13744,9 +14093,12 @@ var $;
 			const obj = new this.$.$mol_icon_heart();
 			return obj;
 		}
+		lives_text(){
+			return "5";
+		}
 		Lives_count(){
 			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ("5");
+			(obj.title) = () => ((this.lives_text()));
 			return obj;
 		}
 		Lives_counter(){
@@ -13863,13 +14215,34 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
-    $mol_style_attach("giper/balls/catalog/catalog.view.css", "[giper_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+    var $$;
+    (function ($$) {
+        class $giper_balls_catalog extends $.$giper_balls_catalog {
+            lives(next) {
+                return this.$.$mol_state_local.value('$giper_balls:lives', next) ?? 5;
+            }
+            lives_text() {
+                return String(this.lives());
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $giper_balls_catalog.prototype, "lives", null);
+        $$.$giper_balls_catalog = $giper_balls_catalog;
+    })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
 "use strict";
+var $;
+(function ($) {
+    $mol_style_attach("giper/balls/catalog/catalog.view.css", "[giper_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+})($ || ($ = {}));
 
 ;
 "use strict";
