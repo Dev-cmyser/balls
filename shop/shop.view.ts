@@ -23,6 +23,11 @@ namespace $.$$ {
 			return [ `${ product.label } — ${ product.price }` ]
 		}
 
+		@ $mol_mem
+		check_pending() {
+			this.verify_payment()
+		}
+
 		@ $mol_action
 		buy_product( product_id: string ) {
 
@@ -42,39 +47,62 @@ namespace $.$$ {
 				lives: response.lives,
 			})
 
-			const self = this
+			const payment_id = response.payment_id
 
 			setTimeout( () => {
-				const checkout = new (self.$.$mol_dom_context as any).YooMoneyCheckoutWidget({
+				const checkout = new (globalThis as any).YooMoneyCheckoutWidget({
 					confirmation_token: response.confirmation_token,
 					error_callback: ( error: any ) => {
 						console.error( 'YooKassa error', error )
 					},
 				})
 
-				const result = checkout.render( 'yookassa-checkout' )
+				checkout.render( 'yookassa-checkout' )
 
-				result.on( 'complete', () => {
-					checkout.destroy()
-					self.verify_payment()
-				})
+				const poll = async () => {
+					try {
+						const resp = await fetch( `${ WORKER_URL }/check-payment?id=${ payment_id }` )
+						const result = await resp.json() as { status: string; paid: boolean; lives: number }
+						console.log( 'Poll result:', result )
+
+						if( result.status === 'succeeded' && result.paid ) {
+							checkout.destroy()
+							const raw = localStorage.getItem( '$giper_balls:lives' )
+						const current = raw !== null ? Number( raw ) : 5
+							localStorage.setItem( '$giper_balls:lives', String( current + result.lives ) )
+							localStorage.removeItem( '$giper_balls:pending_payment' )
+							location.reload()
+							return
+						}
+					} catch( e ) {
+						console.error( 'Poll error:', e )
+					}
+					setTimeout( poll, 1000 )
+				}
+
+				setTimeout( poll, 2000 )
 			}, 100 )
 		}
 
 		verify_payment() {
-			const pending = this.$.$mol_state_local.value( '$giper_balls:pending_payment' ) as { payment_id: string; lives: number } | null
-			if( !pending ) return
+			const raw = localStorage.getItem( '$giper_balls:pending_payment' )
+			if( !raw ) return
+
+			let pending: { payment_id: string; lives: number }
+			try { pending = JSON.parse( raw ) } catch { return }
 
 			const result = this.$.$mol_fetch.json(
 				`${ WORKER_URL }/check-payment?id=${ pending.payment_id }`,
 			) as { status: string; paid: boolean; lives: number }
+
+			console.log( 'Verify pending result:', result )
 
 			if( result.status === 'succeeded' && result.paid ) {
 				const current = ( this.$.$mol_state_local.value( '$giper_balls:lives' ) as number | null ) ?? 5
 				this.$.$mol_state_local.value( '$giper_balls:lives', current + result.lives )
 			}
 
-			this.$.$mol_state_local.value( '$giper_balls:pending_payment', null )
+			localStorage.removeItem( '$giper_balls:pending_payment' )
 			this.selected_product( null )
 		}
 

@@ -1,5 +1,7 @@
 $giper_balls_shop $mol_page
 	title @ \Магазин жизней
+	auto /
+		<= check_pending null
 	body /
 		<= Info $mol_view
 			sub /
