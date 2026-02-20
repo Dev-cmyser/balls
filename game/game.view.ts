@@ -1,5 +1,18 @@
 namespace $.$$ {
 	export class $giper_balls_game extends $.$giper_balls_game {
+
+		@ $mol_mem
+		lives( next?: number ): number {
+			return this.$.$mol_state_local.value( '$giper_balls:lives', next ) ?? 5
+		}
+
+		@ $mol_action
+		spend_life() {
+			const current = this.lives()
+			if( current <= 0 ) return false
+			this.lives( current - 1 )
+			return true
+		}
 		
 		@ $mol_mem
 		rows() {

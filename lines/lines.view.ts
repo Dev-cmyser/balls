@@ -232,19 +232,21 @@ namespace $.$$ {
 		
 		@ $mol_action
 		restart() {
-			
+
+			if( !this.spend_life() ) return
+
 			const { score_max } = this.snapshot()
-			
+
 			this.snapshot({
 				score: 0,
 				score_max,
 				kinds: [],
 			})
-			
+
 			this.active_cell([])
-			
+
 			this.add_new( null )
-			
+
 		}
 		
 	}

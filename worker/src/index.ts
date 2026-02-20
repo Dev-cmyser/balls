@@ -10,18 +10,25 @@ const PRODUCTS: Record<string, { amount: string; currency: string; description: 
 	lives_5: { amount: '500.00', currency: 'RUB', description: '5 жизней — Giper Balls', lives: 5 },
 }
 
-function corsHeaders( env: Env ): HeadersInit {
+const ALLOWED_ORIGINS = [
+	'https://dev-cmyser.github.io',
+	'http://localhost:9080',
+]
+
+function corsHeaders( request: Request ): HeadersInit {
+	const origin = request.headers.get( 'Origin' ) ?? ''
+	const allowed = ALLOWED_ORIGINS.includes( origin ) ? origin : ALLOWED_ORIGINS[0]
 	return {
-		'Access-Control-Allow-Origin': env.ALLOWED_ORIGIN,
+		'Access-Control-Allow-Origin': allowed,
 		'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 		'Access-Control-Allow-Headers': 'Content-Type',
 	}
 }
 
-function jsonResponse( data: unknown, env: Env, status = 200 ) {
+function jsonResponse( data: unknown, request: Request, status = 200 ) {
 	return new Response( JSON.stringify( data ), {
 		status,
-		headers: { ...corsHeaders( env ), 'Content-Type': 'application/json' },
+		headers: { ...corsHeaders( request ), 'Content-Type': 'application/json' },
 	})
 }
 
@@ -31,7 +38,7 @@ async function handleCreatePayment( request: Request, env: Env ) {
 	const product = PRODUCTS[ product_id ]
 
 	if( !product ) {
-		return jsonResponse( { error: 'Unknown product' }, env, 400 )
+		return jsonResponse( { error: 'Unknown product' }, request, 400 )
 	}
 
 	const auth = btoa( `${ env.YOOKASSA_SHOP_ID }:${ env.YOOKASSA_SECRET_KEY }` )
@@ -55,14 +62,14 @@ async function handleCreatePayment( request: Request, env: Env ) {
 	const data = await yooResponse.json<any>()
 
 	if( !yooResponse.ok ) {
-		return jsonResponse( { error: 'Payment creation failed', details: data }, env, 500 )
+		return jsonResponse( { error: 'Payment creation failed', details: data }, request, 500 )
 	}
 
 	return jsonResponse({
 		payment_id: data.id,
 		confirmation_token: data.confirmation.confirmation_token,
 		lives: product.lives,
-	}, env )
+	}, request )
 }
 
 async function handleCheckPayment( request: Request, env: Env ) {
@@ -71,7 +78,7 @@ async function handleCheckPayment( request: Request, env: Env ) {
 	const paymentId = url.searchParams.get( 'id' )
 
 	if( !paymentId ) {
-		return jsonResponse( { error: 'Missing payment id' }, env, 400 )
+		return jsonResponse( { error: 'Missing payment id' }, request, 400 )
 	}
 
 	const auth = btoa( `${ env.YOOKASSA_SHOP_ID }:${ env.YOOKASSA_SECRET_KEY }` )
@@ -87,14 +94,14 @@ async function handleCheckPayment( request: Request, env: Env ) {
 		status: data.status,
 		paid: data.paid,
 		lives: product?.lives ?? 0,
-	}, env )
+	}, request )
 }
 
 export default {
 	async fetch( request: Request, env: Env ): Promise<Response> {
 
 		if( request.method === 'OPTIONS' ) {
-			return new Response( null, { status: 204, headers: corsHeaders( env ) } )
+			return new Response( null, { status: 204, headers: corsHeaders( request ) } )
 		}
 
 		const url = new URL( request.url )
@@ -107,6 +114,6 @@ export default {
 			return handleCheckPayment( request, env )
 		}
 
-		return new Response( 'Not Found', { status: 404, headers: corsHeaders( env ) } )
+		return new Response( 'Not Found', { status: 404, headers: corsHeaders( request ) } )
 	},
 }
