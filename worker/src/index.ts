@@ -56,6 +56,17 @@ async function handleCreatePayment( request: Request, env: Env ) {
 			capture: true,
 			description: product.description,
 			metadata: { product_id },
+			receipt: {
+				customer: { email: 'cmyser.fast@mail.ru' },
+				items: [{
+					description: product.description,
+					quantity: '1.00',
+					amount: { value: product.amount, currency: product.currency },
+					vat_code: 1,
+					payment_subject: 'service',
+					payment_mode: 'full_payment',
+				}],
+			},
 		}),
 	})
 

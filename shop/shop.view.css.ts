@@ -275,6 +275,13 @@ namespace $.$$ {
 			width: '100%',
 		},
 
+		Checkout_info: {
+			textAlign: 'center',
+			padding: $mol_gap.block,
+			fontSize: '1.2rem',
+			fontWeight: 'bold',
+		},
+
 		Footer: {
 			textAlign: 'center',
 			fontSize: '0.85rem',
