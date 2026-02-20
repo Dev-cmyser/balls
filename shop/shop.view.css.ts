@@ -1,5 +1,5 @@
 namespace $.$$ {
-	const { calc } = $mol_style_func
+	const { calc, rgba } = $mol_style_func
 
 	$mol_style_define($giper_balls_shop, {
 		Info: {
@@ -286,7 +286,7 @@ namespace $.$$ {
 			alignItems: 'center',
 			justifyContent: 'center',
 			background: {
-				color: 'rgba(0,0,0,0.6)',
+				color: rgba( 0, 0, 0, 0.6 ),
 			},
 			padding: $mol_gap.block,
 		},
