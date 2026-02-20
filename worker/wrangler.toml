@@ -1,0 +1,10 @@
+name = "giper-balls-payments"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://dev-cmyser.github.io/balls/"
+
+# Secrets (set via CLI, never in code):
+# wrangler secret put YOOKASSA_SHOP_ID
+# wrangler secret put YOOKASSA_SECRET_KEY

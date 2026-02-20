@@ -67,5 +67,7 @@ $giper_balls_shop $mol_page
 						<= Buy_5 $mol_button_major
 							title @ \Купить
 							click? <=> buy_5? null
+		<= Widget_overlay $mol_view
+			sub <= widget_overlay_content /
 		<= Footer $mol_paragraph
 			title @ \Оплата через ЮKassa • Моментальное зачисление

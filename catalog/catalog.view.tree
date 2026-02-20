@@ -8,7 +8,7 @@ $giper_balls_catalog $mol_book2_catalog
 				sub /
 					<= Lives_icon $mol_icon_heart
 					<= Lives_count $mol_paragraph
-						title \5
+						title <= lives_text \5
 	plugins /
 		<= Theme $mol_theme_auto
 	placeholders /
